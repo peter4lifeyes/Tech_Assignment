@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: x86-workload
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: x86-workload
+  template:
+    metadata:
+      labels:
+        app: x86-workload
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+      nodeSelector:
+        kubernetes.io/arch: amd64

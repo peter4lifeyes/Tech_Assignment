@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: arm64-workload
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: arm64-workload
+  template:
+    metadata:
+      labels:
+        app: arm64-workload
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+      nodeSelector:
+        kubernetes.io/arch: arm64
